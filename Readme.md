@@ -11,7 +11,7 @@ use tradedoubler_api_client::{TradedoublerClient,TradedoublerVoucherClient};
 
 fn main(){   
 	let mut core = Core::new().unwrap();
-    let handle = core.handle();
+    	let handle = core.handle();
 
 	let client=TradedoublerClient::new(String::from("TOKEN"),&handle);
 	let work_products=client.get_products().page(2).page_size(10).run();
