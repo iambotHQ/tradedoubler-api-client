@@ -1,4 +1,4 @@
-zanox-api-client
+tradedoubler-api-client
 --------------------
 
 Sample usage:
