@@ -15,8 +15,10 @@ use hyper::client::HttpConnector;
 use futures::future::Future;
 use hyper::{Client,StatusCode};
 use std::clone::Clone;
+use std::fmt;
 use futures::Stream;
 use std::collections::HashMap;
+use std::error::Error;
 use chrono::prelude::*;
 const ALL_PRODUCTS_URL:&'static str="http://api.tradedoubler.com/1.0/productsUnlimited.json";
 const ALL_VOUCHERS_URL:&'static str="https://api.tradedoubler.com/1.0/vouchers.json";
@@ -111,6 +113,18 @@ pub enum TradedoublerClientError{
 	ServerError(StatusCode,String)
 }
 
+impl fmt::Display for TradedoublerClientError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}",self)
+    }
+}
+
+impl Error for TradedoublerClientError {
+    fn description(&self) -> &str {
+        "Tradedouble client error!"
+    }
+
+}
 impl TradedoublerClient{
 
     pub fn new(token:String,handle:&Handle)->TradedoublerClient{    
