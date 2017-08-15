@@ -29,7 +29,7 @@ pub struct Category{
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct RemoteImage{
-	url: String
+	pub url: String
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
